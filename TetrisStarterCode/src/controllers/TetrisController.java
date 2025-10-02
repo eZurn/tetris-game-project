@@ -1,6 +1,4 @@
 package controllers;
-
-import models.StraightLine;
 import models.Tetronimo;
 import views.TetrisBoard;
 import models.TetronimoFactory;
