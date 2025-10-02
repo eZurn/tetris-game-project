@@ -3,6 +3,7 @@
     <CLASSES>
       <root url="jar://$USER_HOME$/Downloads/wheelsunh.jar!/" />
       <root url="jar://$USER_HOME$/Downloads/wheelsunh (1).jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/libraries/wheelsunh.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
