@@ -19,8 +19,7 @@ public class Tetris
     public static void main( String[] args )
     {
         Frame f = new Frame();
-        System.out.println("Test");
-        System.out.println("asdfasdf");
+
         new TetrisBoard( f );
     }
 }

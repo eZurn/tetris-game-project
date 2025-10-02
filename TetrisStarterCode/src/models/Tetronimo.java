@@ -1,4 +1,5 @@
 package models;
+import java.util.Random;
 
 import wheelsunh.users.Animator;
 import wheelsunh.users.Rectangle;
@@ -36,22 +37,22 @@ public abstract class Tetronimo extends ShapeGroup
     public Tetronimo()
     {
         super();
-        this.r1 = new Rectangle();
-        this.r1.setSize( Tetronimo.SIZE, Tetronimo.SIZE );
-        this.r1.setFrameColor( Color.BLACK );
+            this.r1 = new Rectangle();
+            this.r1.setSize(Tetronimo.SIZE, Tetronimo.SIZE);
+            this.r1.setFrameColor(Color.BLACK);
 
-        this.r2 = new Rectangle();
-        this.r2.setSize( Tetronimo.SIZE, Tetronimo.SIZE );
-        this.r2.setFrameColor( Color.BLACK );
+            this.r2 = new Rectangle();
+            this.r2.setSize(Tetronimo.SIZE, Tetronimo.SIZE);
+            this.r2.setFrameColor(Color.BLACK);
 
-        this.r3 = new Rectangle();
-        this.r3.setSize( Tetronimo.SIZE, Tetronimo.SIZE );
-        this.r3.setFrameColor( Color.BLACK );
+            this.r3 = new Rectangle();
+            this.r3.setSize(Tetronimo.SIZE, Tetronimo.SIZE);
+            this.r3.setFrameColor(Color.BLACK);
 
-        this.r4 = new Rectangle();
-        this.r4.setSize( Tetronimo.SIZE, Tetronimo.SIZE );
-        this.r4.setFrameColor( Color.BLACK );
-    }
+            this.r4 = new Rectangle();
+            this.r4.setSize(Tetronimo.SIZE, Tetronimo.SIZE);
+            this.r4.setFrameColor(Color.BLACK);
+        }
 
     /**
      * Increments the rotation of the tetronimo, other classes need to override this to provide the full functionality
@@ -75,5 +76,10 @@ public abstract class Tetronimo extends ShapeGroup
     public void shiftRight()
     {
         super.setLocation( super.getXLocation() + Tetronimo.SIZE, super.getYLocation() );
+    }
+
+    public void shiftDown()
+    {
+        super.setLocation( super.getXLocation() , super.getYLocation() + Tetronimo.SIZE );
     }
 }

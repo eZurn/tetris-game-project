@@ -84,7 +84,6 @@ public class TetrisBoard implements KeyListener
             this.tetronimo.setLocation( this.tetronimo.getXLocation(), this.tetronimo.getYLocation() + Tetronimo.SIZE );
             Utilities.sleep( 500 );
         }
-
         /*
          * This next line is a placeholder for now, you need to change this code so when a piece lands
          * the right squares on the board are painted the color of the tetronimo and the teetronimo itself gets hidden
@@ -146,6 +145,11 @@ public class TetrisBoard implements KeyListener
                     this.tetronimo.shiftRight();
                 }
                 break;
+            case 40:
+                if(this.tetronimo.getYLocation() + this.tetronimo.getHeight()< ((TetrisBoard.HEIGHT * Tetronimo.SIZE))){
+                    this.tetronimo.shiftDown();
+                }
+
         }
 
     }

@@ -1,8 +1,7 @@
 package controllers;
-
-import models.StraightLine;
 import models.Tetronimo;
 import views.TetrisBoard;
+import models.TetronimoFactory;
 
 /**
  * TetrisController.java:
@@ -32,9 +31,8 @@ public class TetrisController
      */
     public Tetronimo getNextTetromino()
     {
-        Tetronimo tetronimo;
+        Tetronimo tetronimo = TetronimoFactory.getRandomTetronimo();
 
-        tetronimo = new StraightLine();
         tetronimo.setLocation( 40 + (5 * Tetronimo.SIZE), 0 );
 
         return tetronimo;
