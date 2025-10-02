@@ -77,4 +77,9 @@ public abstract class Tetronimo extends ShapeGroup
     {
         super.setLocation( super.getXLocation() + Tetronimo.SIZE, super.getYLocation() );
     }
+
+    public void shiftDown()
+    {
+        super.setLocation( super.getXLocation() , super.getYLocation() + Tetronimo.SIZE );
+    }
 }

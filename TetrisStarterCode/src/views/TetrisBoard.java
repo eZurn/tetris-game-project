@@ -145,6 +145,11 @@ public class TetrisBoard implements KeyListener
                     this.tetronimo.shiftRight();
                 }
                 break;
+            case 40:
+                if(this.tetronimo.getYLocation() + this.tetronimo.getHeight()< ((TetrisBoard.HEIGHT * Tetronimo.SIZE))){
+                    this.tetronimo.shiftDown();
+                }
+
         }
 
     }
