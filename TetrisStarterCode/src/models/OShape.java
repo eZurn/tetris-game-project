@@ -16,10 +16,10 @@ import java.awt.Point;
         }
 
         public int getHeight() {
-            return 2;
+            return Tetronimo.SIZE * 2;
         }
 
         public int getWidth() {
-            return 2;
+            return Tetronimo.SIZE * 2;
         }
     }
