@@ -2,6 +2,7 @@
   <library name="wheelsunh">
     <CLASSES>
       <root url="jar://$USER_HOME$/Downloads/wheelsunh.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/wheelsunh (1).jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

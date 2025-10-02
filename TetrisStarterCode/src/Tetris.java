@@ -20,7 +20,7 @@ public class Tetris
     {
         Frame f = new Frame();
         System.out.println("Test");
-
+        System.out.println("asdfasdf");
         new TetrisBoard( f );
     }
 }
