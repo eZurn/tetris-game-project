@@ -60,6 +60,7 @@ public abstract class Tetronimo extends ShapeGroup
     public void rotate()
     {
         this.curRotation++;
+
     }
 
     /**
