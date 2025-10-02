@@ -84,23 +84,6 @@ public class TetrisBoard implements KeyListener
             this.tetronimo.setLocation( this.tetronimo.getXLocation(), this.tetronimo.getYLocation() + Tetronimo.SIZE );
             Utilities.sleep( 500 );
         }
-
-        lockTetrominoIntoBoard(this.tetronimo);
-
-        private void lockTterominoIntoBoard(Tetronimo t){
-            for(var block : t.getBlocks()){
-                int x = block.getXLocation();
-                int y = block.getYLocation();
-
-                int col = (x - 40) / Tetronimo.SIZE;
-                int row = (y) / Tetronimo.SIZE;
-
-                if(col >= 0 && < WIDTH && row >= 0 && row < HEIGHT){
-                    playingField[col][row].setColor(block.getColor());
-                }
-            }
-    }
-
         /*
          * This next line is a placeholder for now, you need to change this code so when a piece lands
          * the right squares on the board are painted the color of the tetronimo and the teetronimo itself gets hidden
