@@ -89,6 +89,7 @@ public class TetrisBoard implements KeyListener
          * the right squares on the board are painted the color of the tetronimo and the teetronimo itself gets hidden
          */
         this.tetronimo = null;
+        this.run();
     }
 
     /**
