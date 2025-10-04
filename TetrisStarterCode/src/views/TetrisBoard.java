@@ -77,6 +77,7 @@ public class TetrisBoard implements KeyListener
      */
     public void run()
     {
+
         this.tetronimo = this.CONTROLLER.getNextTetromino();
 
         while( this.CONTROLLER.tetronimoLanded( this.tetronimo ) )
@@ -131,7 +132,17 @@ public class TetrisBoard implements KeyListener
         switch( key )
         {
             case 38:
-                this.tetronimo.rotate();
+                int curX= this.tetronimo.getXLocation();
+                int curY= this.tetronimo.getYLocation();
+                boolean horizontalFits = (curX + Tetronimo.SIZE * 2 <= WIDTH * Tetronimo.SIZE) &&
+                        (curY + Tetronimo.SIZE * 2 <= HEIGHT * Tetronimo.SIZE);
+
+                boolean verticalFits = (curX + Tetronimo.SIZE <= WIDTH * Tetronimo.SIZE) &&
+                        (curY + Tetronimo.SIZE * 4 <= HEIGHT * Tetronimo.SIZE);
+
+                if(horizontalFits && verticalFits){
+                    this.tetronimo.rotate();
+                }
                 break;
             case 37:
                 if( this.tetronimo.getXLocation() - Tetronimo.SIZE >= 40 )
