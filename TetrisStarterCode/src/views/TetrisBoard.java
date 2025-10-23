@@ -128,21 +128,10 @@ public class TetrisBoard implements KeyListener
             return;
         }
 
-        switch( key ) {
+        switch( key )
+        {
             case 38:
-                int curX = this.tetronimo.getXLocation();
-                int curY = this.tetronimo.getYLocation();
-                boolean horizontalFits = (curX + Tetronimo.SIZE * 2 <= WIDTH * Tetronimo.SIZE) &&
-                        (curY + Tetronimo.SIZE <= HEIGHT * Tetronimo.SIZE);
-
-                // Check if rotation to vertical (1 unit wide, 4 units tall) is valid
-                boolean verticalFits = (curX + Tetronimo.SIZE <= WIDTH * Tetronimo.SIZE) &&
-                        (curY + Tetronimo.SIZE * 4 <= HEIGHT * Tetronimo.SIZE);
-
-                // Allow rotation if either orientation is valid
-                if (horizontalFits && verticalFits) {
-                    this.tetronimo.rotate();
-                }
+                this.tetronimo.rotate();
                 break;
             case 37:
                 if( this.tetronimo.getXLocation() - Tetronimo.SIZE >= 40 )
