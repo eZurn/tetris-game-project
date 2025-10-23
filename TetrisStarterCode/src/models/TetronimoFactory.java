@@ -7,8 +7,8 @@ public class TetronimoFactory {
 
     public static Tetronimo getRandomTetronimo() {
         Tetronimo[] shapes = {
-                //new OShape(),
-                //new StraightLine(),
+                new OShape(),
+                new StraightLine(),
                 new LShape1()
                 // Add more shapes here when you create them, e.g., new LShape(), new JShape(), etc.
         };
