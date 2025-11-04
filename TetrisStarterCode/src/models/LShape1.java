@@ -1,6 +1,6 @@
 package models;
 
-import java.awt.Point;
+import java.awt.*;
 
 /**
  * StraightLine.java:
@@ -18,15 +18,13 @@ public class LShape1 extends Tetronimo
      */
     public LShape1()
     {
+        super(Color.BLUE);
         super.r1.setLocation( 0, 0 );
         super.r2.setLocation( 0, Tetronimo.SIZE );
         super.r3.setLocation( Tetronimo.SIZE, Tetronimo.SIZE);
         super.r4.setLocation( Tetronimo.SIZE*2, Tetronimo.SIZE);
 
-        super.add( r1 );
-        super.add( r2 );
-        super.add( r3 );
-        super.add( r4 );
+        init();
     }
 
     /**

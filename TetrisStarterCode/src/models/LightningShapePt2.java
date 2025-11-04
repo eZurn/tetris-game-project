@@ -1,6 +1,6 @@
 package models;
 
-import java.awt.Point;
+import java.awt.*;
 
 /**
  * StraightLine.java:
@@ -16,15 +16,13 @@ public class LightningShapePt2 extends Tetronimo {
      * Creates the tetronimo and puts it in the vertical orientation
      */
     public LightningShapePt2() {
+        super(Color.RED);
         super.r1.setLocation(0, Tetronimo.SIZE);
         super.r2.setLocation(Tetronimo.SIZE, Tetronimo.SIZE);
         super.r3.setLocation(Tetronimo.SIZE, 0);
         super.r4.setLocation(Tetronimo.SIZE * 2, 0);
 
-        super.add(r1);
-        super.add(r2);
-        super.add(r3);
-        super.add(r4);
+        init();
     }
 
     /**

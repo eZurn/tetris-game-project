@@ -11,158 +11,195 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 /**
- * TetrisBoard.java:
- * Class to model the tetris board
- *
- * @author Professor Rossi
- * @version 1.0 July 24, 2020
- *
- * @see java.awt.Color
- * @see java.awt.event.KeyListener
- * @see java.awt.event.KeyEvent
+ * The visual board + main game loop.
  */
-public class TetrisBoard implements KeyListener
-{
-    /**
-     * Constant to represent the width of the board
-     */
-    public static final int WIDTH = 10;
+public class TetrisBoard implements KeyListener {
+    public static final int WIDTH  = 10;
+    public static final int HEIGHT = 24;          // visible rows (24 total)
 
-    /**
-     * Constant to represnet the height of the board
-     */
-    public static final int HEIGHT = 24;
+    private final TetrisController controller;
+    private Tetronimo current;
+    private Rectangle[][] field;
+    private Rectangle[] previewSquares = new Rectangle[4];
+    private TextBox scoreDisplay;
+    private ShapeGroup nextPreview;
+    private final Frame frame;
+    public static final int BOARD_X = 40;               // left margin of the board
 
-    private final TetrisController CONTROLLER;
-    private Tetronimo tetronimo;
-    private Rectangle[][] playingField;
-
-    /**
-     * Constructor to initialize the board
-     *
-     * @param frame The wheelsunh frame (so we can add this class as a key listener for the frame)
-     */
-    public TetrisBoard( Frame frame )
-    {
-        frame.addKeyListener( this );
-        this.CONTROLLER = new TetrisController( this );
-
-        this.buildBoard();
-
-        this.run();
+    public TetrisBoard(Frame frame) {
+        this.frame = frame;
+        frame.addKeyListener(this);
+        controller = new TetrisController(this);
+        buildBoard();
+        buildGUI();
+        run();
     }
 
-    /**
-     * Builds the playing field for tetris
-     */
-    private void buildBoard()
-    {
-        this.playingField = new Rectangle[ WIDTH ][ HEIGHT ];
+    /** --------------------------------------------------------------------
+     *  Build the empty 10×24 grid of white rectangles.
+     *  -------------------------------------------------------------------- */
+    private void buildBoard() {
+        field = new Rectangle[WIDTH][HEIGHT];
+        for (int x = 0; x < WIDTH; x++) {
+            for (int y = 0; y < HEIGHT; y++) {
+                field[x][y] = new Rectangle();
+                field[x][y].setLocation(BOARD_X + x * Tetronimo.SIZE,
+                        y * Tetronimo.SIZE);
+                field[x][y].setSize(Tetronimo.SIZE, Tetronimo.SIZE);
+                field[x][y].setColor(Color.WHITE);          // empty cell
 
-        for ( int i = 0; i < TetrisBoard.WIDTH; i++ )
-        {
-            for ( int j = 0; j < TetrisBoard.HEIGHT; j++ )
-            {
-                this.playingField[ i ][ j ] = new Rectangle();
-                this.playingField[ i ][ j ].setLocation( i * 20 + 40, j * 20 );
-                this.playingField[ i ][ j ].setSize( Tetronimo.SIZE, Tetronimo.SIZE );
-                this.playingField[ i ][ j ].setColor( Color.WHITE );
-                this.playingField[ i ][ j ].setFrameColor( Color.BLACK );
+                field[x][y].setFrameColor(new Color(220,220,220));
+                field[x][y].setFrameThickness(2);
             }
         }
+
+        Rectangle border = new Rectangle();
+        border.setLocation(BOARD_X - 2, -2);
+        border.setSize(WIDTH * Tetronimo.SIZE + 4,
+                HEIGHT * Tetronimo.SIZE + 4);
+        border.setColor(Color.WHITE);          // transparent inside
+        border.setFrameColor(Color.BLACK);
+        border.setFrameThickness(3);
     }
 
-    /**
-     * Starts gameplay and is responsible for keeping the game going (INCOMPLETE)
-     */
-    public void run()
-    {
-        this.tetronimo = this.CONTROLLER.getNextTetromino();
 
-        while( this.CONTROLLER.tetronimoLanded( this.tetronimo ) )
-        {
-            this.tetronimo.setLocation( this.tetronimo.getXLocation(), this.tetronimo.getYLocation() + Tetronimo.SIZE );
-            Utilities.sleep( 500 );
+    private void buildGUI() {
+        scoreDisplay = new TextBox("Score: 0");
+        scoreDisplay.setLocation(BOARD_X + WIDTH * Tetronimo.SIZE + 20, 50);
+        scoreDisplay.setSize(120, 30);
+
+        TextBox nextLabel = new TextBox("Next:");
+        nextLabel.setLocation(BOARD_X + WIDTH * Tetronimo.SIZE + 20, 100);
+
+        nextPreview = new ShapeGroup();
+        nextPreview.setLocation(BOARD_X + WIDTH * Tetronimo.SIZE + 20, 130);
+
+        // Create 4 permanent preview squares
+        for (int i = 0; i < 4; i++) {
+            previewSquares[i] = new Rectangle();
+            previewSquares[i].setSize(Tetronimo.SIZE, Tetronimo.SIZE);
+            previewSquares[i].setFrameColor(Color.BLACK);
+            previewSquares[i].hide();  // start hidden
+            nextPreview.add(previewSquares[i]);
         }
-        /*
-         * This next line is a placeholder for now, you need to change this code so when a piece lands
-         * the right squares on the board are painted the color of the tetronimo and the teetronimo itself gets hidden
-         */
-        this.tetronimo = null;
-        this.run();
     }
 
-    /**
-     * Getter method for the array representing the playing field, not used yet but will be needed by the controller later
-     *
-     * @return The playing field
-     */
-    public Rectangle[][] getPlayingField()
-    {
-        return playingField;
+    public void updateScore(int score) {
+        scoreDisplay.setText("Score: " + score);
     }
 
-    /**
-     * This method is not used in this program
-     *
-     * @param e The key event
-     */
+    /** --------------------------------------------------------------------
+     *  Refresh the “next piece” preview panel.
+     *  -------------------------------------------------------------------- */
+    public void updatePreview(Tetronimo next) {
+        Rectangle[] src = next.getSquares();
+
+        for (int i = 0; i < 4; i++) {
+            Rectangle srcRect = src[i];
+            Rectangle previewRect = previewSquares[i];
+
+            // Compute relative offset from the piece's origin
+            int relX = srcRect.getXLocation() - next.getXLocation();
+            int relY = srcRect.getYLocation() - next.getYLocation();
+
+            // Center in preview box (add 20px padding)
+            previewRect.setLocation(20 + relX, 20 + relY);
+            previewRect.setColor(srcRect.getColor());
+            previewRect.show();
+        }
+    }
+
+    /** --------------------------------------------------------------------
+     *  Main game loop – runs on the same thread that created the Frame.
+     *  -------------------------------------------------------------------- */
+    public void run() {
+        current = controller.getNextTetromino();
+        updatePreview(controller.getPreviewPiece());
+
+        while (!controller.isGameOver()) {
+            if (controller.tetronimoLanded(current)) {
+                controller.lockPiece(current);
+                if (controller.isGameOver()) break;
+                current = controller.getNextTetromino();
+                updatePreview(controller.getPreviewPiece());
+            } else {
+                current.shiftDown();
+            }
+            Utilities.sleep(400);
+        }
+
+        // ----- GAME OVER -----
+        TextBox gameOver = new TextBox("    GAME OVER    ");
+        gameOver.setLocation(50, 180);
+        gameOver.setSize(280, 80);
+        gameOver.setColor(Color.RED);
+        gameOver.setFrameColor(Color.BLACK);
+        gameOver.setFrameThickness(3);
+    }
+
+    /* --------------------------------------------------------------------
+       KEY HANDLING
+       -------------------------------------------------------------------- */
     @Override
-    public void keyTyped( KeyEvent e )
-    {
-        //not in use
-    }
+    public void keyPressed(KeyEvent e) {
+        if (current == null || controller.isGameOver()) return;
 
-    /**
-     * Handles the key events by the user (INCOMPLETE)
-     *
-     * @param e The key event
-     */
-    @Override
-    public void keyPressed( KeyEvent e )
-    {
         int key = e.getKeyCode();
 
-        if( this.tetronimo == null )
-        {
-            return;
+        switch (key) {
+            case KeyEvent.VK_UP:                     // rotate
+                current.rotate();
+                if (outOfBounds(current) || collision(current))
+                    current.rotate();                // undo illegal rotate
+                break;
+
+            case KeyEvent.VK_LEFT:
+                current.shiftLeft();
+                if (outOfBounds(current) || collision(current))
+                    current.shiftRight();            // undo
+                break;
+
+            case KeyEvent.VK_RIGHT:
+                current.shiftRight();
+                if (outOfBounds(current) || collision(current))
+                    current.shiftLeft();             // undo
+                break;
+
+            case KeyEvent.VK_DOWN:
+                if (!controller.tetronimoLanded(current))
+                    current.shiftDown();
+                break;
         }
-
-        switch( key )
-        {
-            case 38:
-                this.tetronimo.rotate();
-                break;
-            case 37:
-                if( this.tetronimo.getXLocation() - Tetronimo.SIZE >= 40 )
-                {
-                    this.tetronimo.shiftLeft();
-                }
-                break;
-            case 39:
-                if( (this.tetronimo.getXLocation() + this.tetronimo.getWidth()) <
-                        ((TetrisBoard.WIDTH * Tetronimo.SIZE) + 40))
-                {
-                    this.tetronimo.shiftRight();
-                }
-                break;
-            case 40:
-                if(this.tetronimo.getYLocation() + this.tetronimo.getHeight()< ((TetrisBoard.HEIGHT * Tetronimo.SIZE))){
-                    this.tetronimo.shiftDown();
-                }
-
-        }
-
     }
 
-    /**
-     * This method is not used in this program
-     *
-     * @param e The key event
-     */
-    @Override
-    public void keyReleased( KeyEvent e )
-    {
-        //not in use
+    /** --------------------------------------------------------------------
+     *  Helper: does any square lie outside the 10×24 board?
+     *  -------------------------------------------------------------------- */
+    private boolean outOfBounds(Tetronimo t) {
+        for (Rectangle r : t.getSquares()) {
+            int bx = (r.getXLocation() - BOARD_X) / Tetronimo.SIZE;
+            int by = r.getYLocation() / Tetronimo.SIZE;
+            if (bx < 0 || bx >= WIDTH || by >= HEIGHT) return true;
+        }
+        return false;
     }
+
+    /** --------------------------------------------------------------------
+     *  Helper: does the piece overlap a locked square?
+     *  -------------------------------------------------------------------- */
+    private boolean collision(Tetronimo t) {
+        for (Rectangle r : t.getSquares()) {
+            int bx = (r.getXLocation() - BOARD_X) / Tetronimo.SIZE;
+            int by = r.getYLocation() / Tetronimo.SIZE;
+            if (bx >= 0 && bx < WIDTH && by >= 0 && by < HEIGHT) {
+                if (field[bx][by].getColor() != Color.WHITE) return true;
+            }
+        }
+        return false;
+    }
+
+    public Rectangle[][] getPlayingField() { return field; }
+
+    @Override public void keyTyped(KeyEvent e) {}
+    @Override public void keyReleased(KeyEvent e) {}
 }

@@ -4,8 +4,9 @@ import java.util.Random;
 import wheelsunh.users.Animator;
 import wheelsunh.users.Rectangle;
 import wheelsunh.users.ShapeGroup;
-
 import java.awt.Color;
+import java.awt.Point;
+
 
 /**
  * Tetronimo.java:
@@ -27,39 +28,39 @@ public abstract class Tetronimo extends ShapeGroup
     protected Rectangle r2;
     protected Rectangle r3;
     protected Rectangle r4;
-
-    protected int curRotation = 1;
+    protected Color color;
+    protected int curRotation = 0;
 
     /**
      * Generates the four rectangles for the tetronino and puts them on the screen, they are at the default coordinates
      * to start
      */
-    public Tetronimo()
-    {
-        super();
-            this.r1 = new Rectangle();
-            this.r1.setSize(Tetronimo.SIZE, Tetronimo.SIZE);
-            this.r1.setFrameColor(Color.BLACK);
+    public Tetronimo(Color c) {
+        color = c;
+        r1 = createRect(); r2 = createRect(); r3 = createRect(); r4 = createRect();
+    }
 
-            this.r2 = new Rectangle();
-            this.r2.setSize(Tetronimo.SIZE, Tetronimo.SIZE);
-            this.r2.setFrameColor(Color.BLACK);
+    private Rectangle createRect() {
+        Rectangle r = new Rectangle();
+        r.setSize(SIZE, SIZE);
+        r.setFrameColor(Color.BLACK);
+        r.setFrameThickness(1);
+        r.setColor(color);
+        return r;
+    }
 
-            this.r3 = new Rectangle();
-            this.r3.setSize(Tetronimo.SIZE, Tetronimo.SIZE);
-            this.r3.setFrameColor(Color.BLACK);
-
-            this.r4 = new Rectangle();
-            this.r4.setSize(Tetronimo.SIZE, Tetronimo.SIZE);
-            this.r4.setFrameColor(Color.BLACK);
-        }
-
+    protected void init() {
+        add(r1);
+        add(r2);
+        add(r3);
+        add(r4);
+    }
     /**
      * Increments the rotation of the tetronimo, other classes need to override this to provide the full functionality
      */
     public void rotate()
     {
-        this.curRotation++;
+        curRotation = (curRotation + 1) % 4;
 
     }
 
@@ -68,7 +69,7 @@ public abstract class Tetronimo extends ShapeGroup
      */
     public void shiftLeft()
     {
-        super.setLocation( super.getXLocation() - Tetronimo.SIZE, super.getYLocation() );
+        setLocation(getXLocation() - SIZE, getYLocation());
     }
 
     /**
@@ -76,11 +77,30 @@ public abstract class Tetronimo extends ShapeGroup
      */
     public void shiftRight()
     {
-        super.setLocation( super.getXLocation() + Tetronimo.SIZE, super.getYLocation() );
+        setLocation(getXLocation() + SIZE, getYLocation());
     }
 
     public void shiftDown()
     {
-        super.setLocation( super.getXLocation() , super.getYLocation() + Tetronimo.SIZE );
+        setLocation(getXLocation(), getYLocation() + SIZE);
     }
+
+    public void hide() {
+        for (Rectangle r : getSquares()) {
+            r.setColor(new Color(0, 0, 0, 0));  // fully transparent
+        }
+    }
+
+    public void show() {
+        Color original = getColor();
+        for (Rectangle r : getSquares()) {
+            r.setColor(original);
+        }
+    }
+
+    public abstract int getHeight();
+    public abstract int getWidth();
+
+    public Rectangle[] getSquares() { return new Rectangle[]{r1, r2, r3, r4}; }
+    public Color getColor() { return color; }
 }

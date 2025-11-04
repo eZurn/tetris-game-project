@@ -1,6 +1,6 @@
     package models;
 
-    import java.awt.Point;
+    import java.awt.*;
 
     /**
      * StraightLine.java:
@@ -18,15 +18,13 @@
          */
         public StraightLine()
         {
+            super(Color.CYAN);
             super.r1.setLocation( 0, 0 );
             super.r2.setLocation( 0, Tetronimo.SIZE );
             super.r3.setLocation( 0, Tetronimo.SIZE * 2 );
             super.r4.setLocation( 0, Tetronimo.SIZE * 3 );
 
-            super.add( r1 );
-            super.add( r2 );
-            super.add( r3 );
-            super.add( r4 );
+            init();
         }
 
         /**

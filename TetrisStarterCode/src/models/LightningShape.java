@@ -1,6 +1,7 @@
 package models;
 
-import java.awt.Point;
+
+import java.awt.*;
 
 /**
  * StraightLine.java:
@@ -18,15 +19,12 @@ public class LightningShape extends Tetronimo
      */
     public LightningShape()
     {
+        super(Color.GREEN);
         super.r1.setLocation( 0, 0 );
         super.r2.setLocation( Tetronimo.SIZE , 0);
         super.r3.setLocation( Tetronimo.SIZE , Tetronimo.SIZE );
         super.r4.setLocation( Tetronimo.SIZE * 2, Tetronimo.SIZE  );
-
-        super.add( r1 );
-        super.add( r2 );
-        super.add( r3 );
-        super.add( r4 );
+        init();
     }
 
     /**
