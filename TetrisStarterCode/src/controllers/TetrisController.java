@@ -75,6 +75,8 @@ public class TetrisController {
             int y = sq.getYLocation() / Tetronimo.SIZE;
             if (x >= 0 && x < TetrisBoard.WIDTH && y >= 0 && y < TetrisBoard.HEIGHT) {
                 field[x][y].setColor(sq.getColor());
+                //field[x][y].setFrameColor(new Color(10, 10, 10));
+                field[x][y].setFrameThickness(1);
             }
         }
         t.hide();

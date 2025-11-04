@@ -43,9 +43,11 @@ public abstract class Tetronimo extends ShapeGroup
     private Rectangle createRect() {
         Rectangle r = new Rectangle();
         r.setSize(SIZE, SIZE);
+        r.setColor(color);
+
         r.setFrameColor(Color.BLACK);
         r.setFrameThickness(1);
-        r.setColor(color);
+
         return r;
     }
 

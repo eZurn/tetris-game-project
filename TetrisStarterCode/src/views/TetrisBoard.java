@@ -32,6 +32,7 @@ public class TetrisBoard implements KeyListener {
         controller = new TetrisController(this);
         buildBoard();
         buildGUI();
+        createGridlines();
         run();
     }
 
@@ -48,8 +49,8 @@ public class TetrisBoard implements KeyListener {
                 field[x][y].setSize(Tetronimo.SIZE, Tetronimo.SIZE);
                 field[x][y].setColor(Color.WHITE);          // empty cell
 
-                field[x][y].setFrameColor(new Color(220,220,220));
-                field[x][y].setFrameThickness(2);
+                field[x][y].setFrameColor(new Color(200,200,200));
+                field[x][y].setFrameThickness(1);
             }
         }
 
@@ -57,7 +58,8 @@ public class TetrisBoard implements KeyListener {
         border.setLocation(BOARD_X - 2, -2);
         border.setSize(WIDTH * Tetronimo.SIZE + 4,
                 HEIGHT * Tetronimo.SIZE + 4);
-        border.setColor(Color.WHITE);          // transparent inside
+        //border.setColor(Color.WHITE);
+        border.setColor(new Color(0, 0, 0, 0));// transparent inside
         border.setFrameColor(Color.BLACK);
         border.setFrameThickness(3);
     }
@@ -172,6 +174,19 @@ public class TetrisBoard implements KeyListener {
         }
     }
 
+    private void createGridlines() {
+        // Create permanent gridline overlay
+        for (int x = 0; x < WIDTH; x++) {
+            for (int y = 0; y < HEIGHT; y++) {
+                Rectangle gridCell = new Rectangle();
+                gridCell.setLocation(BOARD_X + x * Tetronimo.SIZE, y * Tetronimo.SIZE);
+                gridCell.setSize(Tetronimo.SIZE, Tetronimo.SIZE);
+                gridCell.setColor(new Color(0, 0, 0, 0));  // fully transparent fill
+                gridCell.setFrameColor(new Color(180, 180, 180));  // gray gridlines
+                gridCell.setFrameThickness(1);
+            }
+        }
+    }
     /** --------------------------------------------------------------------
      *  Helper: does any square lie outside the 10×24 board?
      *  -------------------------------------------------------------------- */
