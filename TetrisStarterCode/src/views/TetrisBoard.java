@@ -72,6 +72,10 @@ public class TetrisBoard implements KeyListener {
 
         TextBox nextLabel = new TextBox("Next:");
         nextLabel.setLocation(BOARD_X + WIDTH * Tetronimo.SIZE + 20, 100);
+        nextLabel.setSize(140, 120);
+        nextLabel.setColor(new Color(0, 0, 0, 0));
+        nextLabel.setFrameColor(Color.BLACK);  // keep the outline
+        nextLabel.setFrameThickness(2);
 
         nextPreview = new ShapeGroup();
         nextPreview.setLocation(BOARD_X + WIDTH * Tetronimo.SIZE + 20, 130);
@@ -100,12 +104,12 @@ public class TetrisBoard implements KeyListener {
             Rectangle srcRect = src[i];
             Rectangle previewRect = previewSquares[i];
 
-            // Compute relative offset from the piece's origin
-            int relX = srcRect.getXLocation() - next.getXLocation();
-            int relY = srcRect.getYLocation() - next.getYLocation();
+            // Get the square's location directly (they're positioned relative to 0,0)
+            int relX = srcRect.getXLocation();
+            int relY = srcRect.getYLocation();
 
             // Center in preview box (add 20px padding)
-            previewRect.setLocation(20 + relX, 20 + relY);
+            previewRect.setLocation(300 + relX, 130 + relY);
             previewRect.setColor(srcRect.getColor());
             previewRect.show();
         }

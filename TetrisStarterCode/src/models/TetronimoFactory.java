@@ -9,11 +9,14 @@ public class TetronimoFactory {
         Tetronimo[] shapes = {
                 new OShape(),
                 new StraightLine(),
-                new LShape1(),
-                new LShape2(),
                 new LightningShape(),
                 new LightningShapePt2(),
+                new LShape1(),
+                new LShape2(),
                 new TShape()
+
+
+                // Add more shapes here when you create them, e.g., new LShape(), new JShape(), etc.
         };
         return shapes[random.nextInt(shapes.length)];
     }
