@@ -37,7 +37,7 @@ public class LightningShapePt2 extends Tetronimo {
 
         final int S = Tetronimo.SIZE;
 
-        switch (super.curRotation % 4) {
+        switch (super.curRotation % 2) {
             case 0:
                 r1.setLocation(0, S);
                 r2.setLocation(S, S);
@@ -46,10 +46,10 @@ public class LightningShapePt2 extends Tetronimo {
                 break;
 
             case 1:
-                r1.setLocation(S, 2 * S);
-                r2.setLocation(S, S);
-                r3.setLocation(0, S);
-                r4.setLocation(0, 0);
+                r1.setLocation(0, 0);
+                r2.setLocation(0, S);
+                r3.setLocation(S, S);
+                r4.setLocation(S, 2*S);
                 break;
 
             default:

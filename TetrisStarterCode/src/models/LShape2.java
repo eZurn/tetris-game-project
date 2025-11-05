@@ -39,28 +39,28 @@ public class LShape2 extends Tetronimo
         super.setLocation( 0, 0 );
 
         switch( this.curRotation % 4){
-            case 1:
+            case 0:
                 super.r1.setLocation( 0, Tetronimo.SIZE );
                 super.r2.setLocation( Tetronimo.SIZE, Tetronimo.SIZE );
                 super.r3.setLocation( Tetronimo.SIZE*2, Tetronimo.SIZE);
                 super.r4.setLocation( Tetronimo.SIZE*2, 0);
                 break;
-            case 2:
+            case 1:
                 super.r1.setLocation( 0, 0 );
-                super.r2.setLocation( 0, Tetronimo.SIZE );
-                super.r3.setLocation( 0, Tetronimo.SIZE*2);
+                super.r2.setLocation( Tetronimo.SIZE, 0 );
+                super.r3.setLocation( Tetronimo.SIZE, Tetronimo.SIZE);
                 super.r4.setLocation( Tetronimo.SIZE, Tetronimo.SIZE*2);
                 break;
-            case 3:
+            case 2:
                 super.r1.setLocation( 0, 0);
                 super.r2.setLocation( Tetronimo.SIZE, 0 );
                 super.r3.setLocation( Tetronimo.SIZE*2, 0);
                 super.r4.setLocation( 0, Tetronimo.SIZE);
                 break;
-            case 0:
+            case 3:
                 super.r1.setLocation( 0, 0);
-                super.r2.setLocation( Tetronimo.SIZE, 0 );
-                super.r3.setLocation( Tetronimo.SIZE, Tetronimo.SIZE);
+                super.r2.setLocation( 0, Tetronimo.SIZE );
+                super.r3.setLocation( 0, Tetronimo.SIZE*2);
                 super.r4.setLocation( Tetronimo.SIZE, Tetronimo.SIZE*2);
                 break;
         }
@@ -76,13 +76,10 @@ public class LShape2 extends Tetronimo
     @Override
     public int getHeight()
     {
-        if( this.curRotation % 2 == 0 )
-        {
-            return Tetronimo.SIZE * 2;
-        }
-        else
-        {
+        if (this.curRotation % 4 == 1 || this.curRotation % 4 == 3) {
             return Tetronimo.SIZE * 3;
+        } else {
+            return Tetronimo.SIZE * 2;
         }
     }
 
@@ -94,13 +91,10 @@ public class LShape2 extends Tetronimo
     @Override
     public int getWidth()
     {
-        if( this.curRotation % 2 == 0 )
-        {
+        if (this.curRotation % 4 == 1 || this.curRotation % 4 == 3) {
+            return Tetronimo.SIZE * 2;
+        } else {
             return Tetronimo.SIZE * 3;
         }
-        else
-        {
-            return Tetronimo.SIZE * 2;
         }
-    }
 }
