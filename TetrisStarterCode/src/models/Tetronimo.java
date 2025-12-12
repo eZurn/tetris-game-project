@@ -37,17 +37,23 @@ public abstract class Tetronimo extends ShapeGroup
      */
     public Tetronimo(Color c) {
         color = c;
-        r1 = createRect(); r2 = createRect(); r3 = createRect(); r4 = createRect();
+        // Create rectangles with proper initialization
+        r1 = createRect();
+        r2 = createRect();
+        r3 = createRect();
+        r4 = createRect();
+
     }
 
     private Rectangle createRect() {
         Rectangle r = new Rectangle();
         r.setSize(SIZE, SIZE);
-
-
-        r.setFrameColor(Color.BLACK);
+        // Fill color from the Tetromino (CYAN, RED, BLUE, etc.)
+        r.setFrameColor(new Color(0,0,0));  // Border color
         r.setColor(color);
         r.setFrameThickness(1);
+        r.hide();
+
 
         return r;
     }
@@ -90,14 +96,16 @@ public abstract class Tetronimo extends ShapeGroup
 
     public void hide() {
         for (Rectangle r : getSquares()) {
-            r.setColor(new Color(0, 0, 0, 0));  // fully transparent
+            r.hide();  // fully transparent
         }
     }
 
     public void show() {
-        Color original = getColor();
         for (Rectangle r : getSquares()) {
-            r.setColor(original);
+            r.setColor(color);  // Use the piece's stored color
+            r.setFrameColor(new Color(170, 170, 170));
+            r.setFrameThickness(1);
+            r.show();
         }
     }
 

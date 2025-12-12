@@ -6,18 +6,23 @@ public class TetronimoFactory {
     private static final Random random = new Random();
 
     public static Tetronimo getRandomTetronimo() {
-        Tetronimo[] shapes = {
-                new OShape(),
-                new StraightLine(),
-                new LightningShape(),
-                new LightningShapePt2(),
-                new LShape1(),
-                new LShape2(),
-                new TShape()
-
-
-                // Add more shapes here when you create them, e.g., new LShape(), new JShape(), etc.
-        };
-        return shapes[random.nextInt(shapes.length)];
+        switch (random.nextInt(7)) {
+            case 0:
+                return new OShape();
+            case 1:
+                return new StraightLine();
+            case 2:
+                return new LightningShape();
+            case 3:
+                return new LightningShapePt2();
+            case 4:
+                return new LShape1();
+            case 5:
+                return new LShape2();
+            case 6:
+                return new TShape();
+            default:
+                return new OShape(); // fallback
+        }
     }
 }
