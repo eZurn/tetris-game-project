@@ -14,6 +14,9 @@ public class TShape extends Tetronimo {
         init();
     }
 
+    /**
+     * rotates the piece
+     */
     @Override
     public void rotate() {
         super.rotate();

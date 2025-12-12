@@ -2,9 +2,18 @@ package models;
 
 import java.util.Random;
 
+/**
+ * TetronimoFactory.java
+ * @author Eric Zurn
+ * Picks a random tetronimo
+ */
 public class TetronimoFactory {
     private static final Random random = new Random();
 
+    /**
+     * Generates and returns the tetronimo
+     * @return the tetronimo
+     */
     public static Tetronimo getRandomTetronimo() {
         switch (random.nextInt(7)) {
             case 0:

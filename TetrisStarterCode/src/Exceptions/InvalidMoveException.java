@@ -24,30 +24,5 @@ public class InvalidMoveException extends RuntimeException {
         this.attemptedY = y;
     }
 
-    /**
-     * Gets the type of move that failed
-     *
-     * @return The move type (LEFT, RIGHT, DOWN, ROTATE)
-     */
-    public String getMoveType() {
-        return moveType;
-    }
 
-    /**
-     * Gets the attempted X coordinate
-     *
-     * @return X coordinate
-     */
-    public int getAttemptedX() {
-        return attemptedX;
-    }
-
-    /**
-     * Gets the attempted Y coordinate
-     *
-     * @return Y coordinate
-     */
-    public int getAttemptedY() {
-        return attemptedY;
-    }
 }

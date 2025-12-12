@@ -3,6 +3,9 @@ import java.awt.*;
 
 public class OShape extends Tetronimo {
 
+    /**
+     * rotates the piece
+     */
         public OShape() {
             super(Color.YELLOW);
             super.r1.setLocation(0, 0);

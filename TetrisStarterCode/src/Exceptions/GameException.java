@@ -8,12 +8,6 @@ package Exceptions;
 public class GameException extends Exception {
     private String details;
 
-    /**
-     * Constructor with default error message
-     */
-    public GameException() {
-        super("A game error has occurred.");
-    }
 
     /**
      * Constructor with custom message

@@ -45,6 +45,10 @@ public abstract class Tetronimo extends ShapeGroup
 
     }
 
+    /**
+     * Creates a rectangle for a piece of a tetronimo
+     * @return the small piece of the tetronimo
+     */
     private Rectangle createRect() {
         Rectangle r = new Rectangle();
         r.setSize(SIZE, SIZE);

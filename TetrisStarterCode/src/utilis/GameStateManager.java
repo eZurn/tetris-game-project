@@ -51,59 +51,6 @@ public class GameStateManager <T>{
         }
     }
 
-    /**
-     * Get item from history at specific index
-     *
-     * @param index The index to retrieve
-     * @return The item at that index, or null if out of bounds
-     */
-    public T getFromHistory(int index) {
-        try {
-            return history.get(index);
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("History index out of bounds: " + e.getMessage());
-            return null;
-        }
-    }
-
-    /**
-     * Get the most recent history item
-     *
-     * @return The most recent item, or null if history is empty
-     */
-    public T getLatestHistory() {
-        if (history.isEmpty()) {
-            return null;
-        }
-        return history.get(history.size() - 1);
-    }
-
-    /**
-     * Add item to upcoming queue
-     *
-     * @param item The item to queue
-     */
-    public void queueUpcoming(T item) {
-        upcoming.offer(item);
-    }
-
-    /**
-     * Get and remove next upcoming item
-     *
-     * @return The next upcoming item, or null if queue is empty
-     */
-    public T getNextUpcoming() {
-        return upcoming.poll();
-    }
-
-    /**
-     * Peek at next upcoming item without removing
-     *
-     * @return The next upcoming item, or null if queue is empty
-     */
-    public T peekNextUpcoming() {
-        return upcoming.peek();
-    }
 
     /**
      * Clear all history
@@ -112,30 +59,6 @@ public class GameStateManager <T>{
         history.clear();
     }
 
-    /**
-     * Clear upcoming queue
-     */
-    public void clearUpcoming() {
-        upcoming.clear();
-    }
-
-    /**
-     * Get history size
-     *
-     * @return Number of items in history
-     */
-    public int getHistorySize() {
-        return history.size();
-    }
-
-    /**
-     * Get upcoming queue size
-     *
-     * @return Number of items in upcoming queue
-     */
-    public int getUpcomingSize() {
-        return upcoming.size();
-    }
 
     /**
      * Get all history items
