@@ -469,7 +469,6 @@ public class TetrisBoard implements KeyListener {
 
     /**
      * Handle pause/resume toggle
-     * Demonstrates thread wait/notify from Week 13
      */
     private void handlePause() {
         if (gameThread != null) {

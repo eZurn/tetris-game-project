@@ -90,17 +90,26 @@ public abstract class Tetronimo extends ShapeGroup
         setLocation(getXLocation() + SIZE, getYLocation());
     }
 
+    /**
+     * Shifts the tetronimo down one row
+     */
     public void shiftDown()
     {
         setLocation(getXLocation(), getYLocation() + SIZE);
     }
 
+    /**
+     * Hide the tetronimo
+     */
     public void hide() {
         for (Rectangle r : getSquares()) {
             r.hide();  // fully transparent
         }
     }
 
+    /**
+     * Shows the tetronimo
+     */
     public void show() {
         for (Rectangle r : getSquares()) {
             r.setColor(color);  // Use the piece's stored color
@@ -110,9 +119,26 @@ public abstract class Tetronimo extends ShapeGroup
         }
     }
 
+    /**
+     * Returns the height of a tetronimo
+     * @return the height
+     */
     public abstract int getHeight();
+    /**
+     * Returns the width of a tetronimo
+     * @return the width
+     */
     public abstract int getWidth();
 
+    /**
+     * Returns the tetronimo
+     * @return tetronimo in rectangles
+     */
     public Rectangle[] getSquares() { return new Rectangle[]{r1, r2, r3, r4}; }
+
+    /**
+     * Returns the color of the color of the tetronimo
+     * @return the color
+     */
     public Color getColor() { return color; }
 }

@@ -21,11 +21,19 @@ public class OShape extends Tetronimo {
             init();
         }
 
-        public int getHeight() {
+    /**
+     * Returns the height of the tetronimo
+     * @return the height
+     */
+    public int getHeight() {
             return Tetronimo.SIZE * 2;
         }
 
-        public int getWidth() {
-            return Tetronimo.SIZE * 2;
-        }
+    /**
+     * Returns the width of the tetronimo
+     * @return the width
+     */
+    public int getWidth() {
+        return Tetronimo.SIZE * 2;
+    }
     }
