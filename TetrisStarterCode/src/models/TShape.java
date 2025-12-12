@@ -2,6 +2,11 @@ package models;
 
 import java.awt.*;
 
+/**
+ * TShape.java
+ * @author Eric Zurn
+ * Creates a t-shaped tetronimo
+ */
 public class TShape extends Tetronimo {
     public TShape() {
         super(Color.MAGENTA);
@@ -52,11 +57,19 @@ public class TShape extends Tetronimo {
         setLocation(loc);
     }
 
+    /**
+     * A method to return the height of the t-shaped tetronimo
+     * @return the height
+     */
     @Override
     public int getHeight() {
         return (curRotation % 2 == 0) ? SIZE * 2 : SIZE * 3;
     }
 
+    /**
+     * A method to return the width of the t-shaped tetronimo
+     * @return the width
+     */
     @Override
     public int getWidth() {
         return (curRotation % 2 == 0) ? SIZE * 3 : SIZE * 2;

@@ -1,11 +1,8 @@
 package models;
-import java.util.Random;
 
-import wheelsunh.users.Animator;
 import wheelsunh.users.Rectangle;
 import wheelsunh.users.ShapeGroup;
 import java.awt.Color;
-import java.awt.Point;
 
 
 /**

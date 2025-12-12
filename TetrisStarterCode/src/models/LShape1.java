@@ -3,13 +3,10 @@ package models;
 import java.awt.*;
 
 /**
- * StraightLine.java:
- * Creates a straight line tetronimo
+ * LShape1.java:
+ * Creates a L Shape tetronimo
  *
- * @author Professor Rossi
- * @version 1.0 July 24, 2020
- *
- * @see java.awt.Point
+ * @author Adam Smith
  */
 public class LShape1 extends Tetronimo
 {

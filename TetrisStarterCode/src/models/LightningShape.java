@@ -4,13 +4,11 @@ package models;
 import java.awt.*;
 
 /**
- * StraightLine.java:
- * Creates a straight line tetronimo
+ * LightningShape.java:
+ * Creates a lightning shape tetronimo
  *
- * @author Professor Rossi
- * @version 1.0 July 24, 2020
+ * @author Matt Nguyen
  *
- * @see java.awt.Point
  */
 public class LightningShape extends Tetronimo
 {
@@ -76,6 +74,11 @@ public class LightningShape extends Tetronimo
                 : Tetronimo.SIZE * 3;
     }
 
+    /**
+     * Gets the width of the tetronimo based on the orientation
+     *
+     * @return The width of the tetronimo
+     */
     @Override
     public int getWidth()
     {

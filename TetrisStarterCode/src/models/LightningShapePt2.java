@@ -3,13 +3,11 @@ package models;
 import java.awt.*;
 
 /**
- * StraightLine.java:
- * Creates a straight line tetronimo
+ * LightningShape.java:
+ * Creates a lightning shape tetronimo
  *
- * @author Professor Rossi
- * @version 1.0 July 24, 2020
+ * @author Matt Nguyen
  *
- * @see java.awt.Point
  */
 public class LightningShapePt2 extends Tetronimo {
     /**

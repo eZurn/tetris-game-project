@@ -1,6 +1,11 @@
 package models;
 import java.awt.*;
 
+/**
+ * OShape.java
+ * @author Matt Nguyen
+ * A class representing the 2x2 tetronimo
+ */
 public class OShape extends Tetronimo {
 
     /**
