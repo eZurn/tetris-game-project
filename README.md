@@ -25,15 +25,6 @@ A fully functional Tetris game created as a school project for Object-Oriented D
 
 ---
 
-## 🛠️ Tech Stack
-
-| Tool | Version |
-|---|---|
-| Java | 8+ (tested on Java 17) |
-| Graphics Library | WheelsUNH |
-
----
-
 ## 📦 Dependencies
 
 ### WheelsUNH Library
