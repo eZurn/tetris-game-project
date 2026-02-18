@@ -6,7 +6,7 @@ A fully functional Tetris game created as a school project for Object-Oriented D
 
 ## 📸 Preview
 
-IN PROCCESS OF DEVELOPING PREVIEW
+![Tetris Demo](assets/TetrisDemo.gif)
 
 ---
 
