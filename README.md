@@ -62,18 +62,6 @@ cd YOUR_REPO_NAME
 
 ### 2. Add the WheelsUNH library
 
-You need `wheelsunh.jar` accessible when compiling and running. How to do this depends on your environment:
-
-**Command Line (javac / java)**
-```bash
-# Compile
-javac -cp ".;lib/wheelsunh.jar" src/**/*.java src/Tetris.java
-
-# Run
-java -cp ".;lib/wheelsunh.jar;src" Tetris
-```
-> On Mac/Linux, replace `;` with `:` in the classpath
-
 **IntelliJ IDEA**
 1. Go to **File → Project Structure** (`Ctrl+Alt+Shift+S`)
 2. Select **Modules → Dependencies**
