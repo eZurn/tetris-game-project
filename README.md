@@ -75,33 +75,13 @@ Run the `main` method in `Tetris.java` — this is the entry point for the progr
 
 ---
 
-## 🗂️ Project Structure
+## 🔧 Future Improvements
 
-```
-src/
-├── Tetris.java                  # Entry point
-├── controllers/
-│   └── TetrisController.java    # Game logic, scoring, collision
-├── views/
-│   └── TetrisBoard.java         # Board rendering and UI
-├── models/
-│   ├── Tetronimo.java           # Abstract base class for pieces
-│   ├── TetronimoFactory.java    # Random piece generator
-│   ├── StraightLine.java        # I-piece
-│   ├── OShape.java              # O-piece
-│   ├── TShape.java              # T-piece
-│   ├── LShape1.java             # J-piece
-│   ├── LShape2.java             # L-piece
-│   ├── LightningShape.java      # S-piece
-│   └── LightningShapePt2.java   # Z-piece
-├── threads/
-│   └── GameLoopThread.java      # Runnable game loop
-├── utilis/
-│   └── GameStateManager.java    # Generic history/queue manager
-└── Exceptions/
-    ├── GameException.java        # Checked exception for game errors
-    └── InvalidMoveException.java # Runtime exception for illegal moves
-```
+*The following are some potential changes Eric may look to make to the project going forward:*
+
+- **Code cleanup** — Clean up existing code to be more readable and easier to follow, including better comments and cleaner structure throughout
+- **Remove unnecessary files** — Go through the project and cut anything that's redundant or no longer needed to keep the codebase lean
+- **UI overhaul** — Update the color scheme for the grid lines and overall board, and make the play screen more visually polished
 
 ---
 
@@ -130,13 +110,33 @@ Level increases every **10 lines cleared**, and the drop speed increases with ea
 
 ---
 
-## 🔧 Future Improvements
+## 🗂️ Project Structure
 
-*The following are some potential changes Eric may look to make to the project going forward:*
-
-- **Code cleanup** — Clean up existing code to be more readable and easier to follow, including better comments and cleaner structure throughout
-- **Remove unnecessary files** — Go through the project and cut anything that's redundant or no longer needed to keep the codebase lean
-- **UI overhaul** — Update the color scheme for the grid lines and overall board, and make the play screen more visually polished
+```
+src/
+├── Tetris.java                  # Entry point
+├── controllers/
+│   └── TetrisController.java    # Game logic, scoring, collision
+├── views/
+│   └── TetrisBoard.java         # Board rendering and UI
+├── models/
+│   ├── Tetronimo.java           # Abstract base class for pieces
+│   ├── TetronimoFactory.java    # Random piece generator
+│   ├── StraightLine.java        # I-piece
+│   ├── OShape.java              # O-piece
+│   ├── TShape.java              # T-piece
+│   ├── LShape1.java             # J-piece
+│   ├── LShape2.java             # L-piece
+│   ├── LightningShape.java      # S-piece
+│   └── LightningShapePt2.java   # Z-piece
+├── threads/
+│   └── GameLoopThread.java      # Runnable game loop
+├── utilis/
+│   └── GameStateManager.java    # Generic history/queue manager
+└── Exceptions/
+    ├── GameException.java        # Checked exception for game errors
+    └── InvalidMoveException.java # Runtime exception for illegal moves
+```
 
 ---
 
