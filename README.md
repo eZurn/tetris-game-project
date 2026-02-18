@@ -130,6 +130,16 @@ Level increases every **10 lines cleared**, and the drop speed increases with ea
 
 ---
 
+## 🔧 Future Improvements
+
+*The following are some potential changes Eric may look to make to the project going forward:*
+
+- **Code cleanup** — Clean up existing code to be more readable and easier to follow, including better comments and cleaner structure throughout
+- **Remove unnecessary files** — Go through the project and cut anything that's redundant or no longer needed to keep the codebase lean
+- **UI overhaul** — Update the color scheme for the grid lines and overall board, and make the play screen more visually polished
+
+---
+
 ## 👥 Authors
 
 - **Eric Zurn** — `TetrisController.java`, `GameLoopThread.java`, `GameStateManager.java`, `TetronimoFactory.java`, `TShape.java`, `GameException.java`, `InvalidMoveException.java`
