@@ -1,4 +1,4 @@
-# 🎮 Java Tetris
+# Java Tetris
 
 A fully functional Tetris game created as a school project for Object-Oriented Design. Built in Java using the **WheelsUNH** graphics library. Features all 7 standard Tetromino pieces, line clearing with scoring, level progression, piece preview, and a multithreaded game loop.
 
@@ -10,7 +10,7 @@ A fully functional Tetris game created as a school project for Object-Oriented D
 
 ---
 
-## ✨ Features
+## Features
 
 - All 7 classic Tetromino pieces (I, O, T, S, Z, J, L)
 - Piece rotation with wall-aware collision detection
@@ -25,19 +25,19 @@ A fully functional Tetris game created as a school project for Object-Oriented D
 
 ---
 
-## 📦 Dependencies
+## Dependencies
 
 ### WheelsUNH Library
 
 This project uses **WheelsUNH**, a Java graphics library originally developed at the University of New Hampshire for introductory CS courses. It provides the `Frame`, `Rectangle`, and `ShapeGroup` classes used throughout the project.
 
-> ⚠️ The project will **not compile or run** without this library.
+> The project will **not compile or run** without this library.
 
 You can find `wheelsunh.jar` in the `/lib` folder of this repository.
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -75,7 +75,7 @@ Run the `main` method in `Tetris.java` — this is the entry point for the progr
 
 ---
 
-## 🎮 Controls
+## Controls
 
 | Key | Action |
 |---|---|
@@ -87,7 +87,7 @@ Run the `main` method in `Tetris.java` — this is the entry point for the progr
 
 ---
 
-## 📊 Scoring
+## Scoring
 
 | Lines Cleared | Points (× Level) |
 |---|---|
@@ -99,7 +99,7 @@ Run the `main` method in `Tetris.java` — this is the entry point for the progr
 Level increases every **10 lines cleared**, and the drop speed increases with each level.
 
 ---
-## 🔧 Future Improvements
+## Future Improvements
 
 *The following are some potential changes Eric may look to make to the project going forward:*
 
@@ -109,7 +109,7 @@ Level increases every **10 lines cleared**, and the drop speed increases with ea
 
 ---
 
-## 🗂️ Project Structure
+## Project Structure
 
 ```
 src/
@@ -139,7 +139,7 @@ src/
 
 ---
 
-## 👥 Authors
+## Authors
 
 - **Eric Zurn** — `TetrisController.java`, `GameLoopThread.java`, `GameStateManager.java`, `TetronimoFactory.java`, `TShape.java`, `GameException.java`, `InvalidMoveException.java`
 - **Adam Smith** — `LShape1.java`, `LShape2.java`
